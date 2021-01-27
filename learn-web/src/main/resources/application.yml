@@ -1,0 +1,52 @@
+# SPRING
+spring:
+  profiles:
+    active: dev
+    include: login
+  aop:
+    auto: true # Add @EnableAspectJAutoProxy.
+    proxy-target-class: true # Whether subclass-based (CGLIB) proxies are to be created (true), as opposed to standard Java interface-based proxies (false).
+  application:
+    name: learn
+  output:
+    ansi:
+      enabled: always # Configures the ANSI output.
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss # Date format string or a fully-qualified date format class name. For instance, `yyyy-MM-dd HH:mm:ss`.
+    time-zone: GMT+8 # Time zone used when formatting dates. For instance, "America/Los_Angeles" or "GMT+10".
+  http:
+    encoding:
+      charset: UTF-8
+  mvc:
+    favicon:
+      enabled: false
+
+# EMBEDDED SERVER CONFIGURATION
+server:
+  tomcat:
+    uri-encoding: UTF-8
+  port: 80
+
+# LOGGING
+logging:
+  file:
+    max-history: 16
+    max-size: 1024MB
+    path: /export/Logs/learn/
+  pattern:
+    level: traceId:%X{traceId} %5p
+  level:
+    org:
+      apache:
+        mahout:
+          cf:
+            taste:
+              impl:
+                recommender: info
+
+# PAGE HELPER
+pagehelper:
+  helperDialect: mysql
+  reasonable: false
+  supportMethodsArguments: true
+  params: count=countSql
